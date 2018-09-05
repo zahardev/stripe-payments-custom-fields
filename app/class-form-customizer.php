@@ -25,10 +25,28 @@ class Form_Customizer implements Singleton {
 		$this->customize_form();
 	}
 
+
 	/**
+	 * @param $data
 	 *
+	 * @return string
 	 */
-	public function customize_form() {
+	public function save( $data ) {
+		foreach ( $this->get_fields() as $field ) {
+			$field_data = filter_input( INPUT_POST, $field->id, FILTER_SANITIZE_STRING );
+			if ( $field_data ) {
+				$data['post_content'] .= PHP_EOL . $field->label . ': ' . $field_data;
+			}
+		}
+
+		return $data;
+	}
+
+	/**
+	 * Function customize_form
+	 * Adds new fields to the form
+	 */
+	private function customize_form() {
 		//Adding fields using this filter because other filters don't work.
 		//Please check this issue: https://github.com/Arsenal21/stripe-payments/issues/54
 		add_filter(
@@ -56,18 +74,11 @@ class Form_Customizer implements Singleton {
 	 *
 	 * @return string
 	 */
-	public function render_field( Field_Model $field ) {
+	private function render_field( Field_Model $field ) {
 		ob_start();
 		include SPCF_PLUGIN_DIR . '/templates/field.php';
 
 		return ob_get_clean();
-	}
-
-	/**
-	 *
-	 */
-	public function save() {
-
 	}
 
 	/**
