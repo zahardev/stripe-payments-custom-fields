@@ -10,4 +10,28 @@ form.asp-stripe-form textarea {
     padding: 4px 9px;
     margin-bottom: 10px;
     min-width: 236px;
+    -webkit-appearance: textfield;
+    border: 1px solid #ccc;
+    background: #fff;
+    height: 32px;
+}
+
+
+form.asp-stripe-form input::placeholder {
+    color: #ccc;
+}
+
+@media only screen and (max-width: 568px) {
+    form.asp-stripe-form input[type="email"],
+    form.asp-stripe-form input[type="number"],
+    form.asp-stripe-form input[type="password"],
+    form.asp-stripe-form input[type="search"],
+    form.asp-stripe-form input[type="tel"],
+    form.asp-stripe-form input[type="text"],
+    form.asp-stripe-form input[type="url"],
+    form.asp-stripe-form select,
+    form.asp-stripe-form textarea {
+        min-width: 120px;
+        width: 64%;
+    }
 }

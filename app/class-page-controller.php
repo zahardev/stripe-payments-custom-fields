@@ -15,7 +15,7 @@ class Page_Controller implements Singleton {
 
 	use SingletonTrait;
 
-	const ASSETS_VERSION = '0.1';
+	const ASSETS_VERSION = '0.2';
 
 	public function init() {
 		if ( is_admin() ) {
