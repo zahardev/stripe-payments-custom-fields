@@ -1,6 +1,6 @@
 <?php
 
-namespace Stripe_Payments_Custom_Fields;
+namespace Stripe_Payments_Custom_Fields\Traits;
 
 
 /**
