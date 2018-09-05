@@ -14,6 +14,8 @@ class Form_Customizer implements Singleton {
 
 	use SingletonTrait;
 
+	const ASSETS_VERSION = '0.2';
+
 	/**
 	 *
 	 */
@@ -42,6 +44,14 @@ class Form_Customizer implements Singleton {
 		return $data;
 	}
 
+	public function enqueue_styles() {
+		wp_enqueue_style(
+			'stripe-payments-custom-fields.css',
+			SPCF_PLUGIN_URL . '/assets/css/stripe-payments-custom-fields.css', [],
+			self::ASSETS_VERSION
+		);
+	}
+
 	/**
 	 * Function customize_form
 	 * Adds new fields to the form
@@ -49,6 +59,7 @@ class Form_Customizer implements Singleton {
 	private function customize_form() {
 		//Adding fields using this filter because other filters don't work.
 		//Please check this issue: https://github.com/Arsenal21/stripe-payments/issues/54
+		add_action( 'init', [ $this, 'enqueue_styles' ] );
 		add_filter(
 			'asp_button_output_before_button',
 			function ( $output ) {

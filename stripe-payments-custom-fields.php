@@ -31,9 +31,7 @@ define( 'SPCF_PLUGIN_URL', plugins_url('', __FILE__));
 
 require_once __DIR__ . '/app/interfaces/interface-singleton.php';
 require_once __DIR__ . '/app/traits/trait-singleton.php';
-require_once __DIR__ . '/app/class-page-controller.php';
 require_once __DIR__ . '/app/class-field-model.php';
 require_once __DIR__ . '/app/class-form-customizer.php';
 
-Stripe_Payments_Custom_Fields\Page_Controller::instance()->init();
 Stripe_Payments_Custom_Fields\Form_Customizer::instance()->init();
